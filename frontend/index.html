@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYK Pizzeria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="./src/output.css" rel="stylesheet">
+    <style>
+        
+        #loginModal {
+            backdrop-filter: blur(8px); 
+            background-color: rgba(0, 0, 0, 0.5); 
+        }
+    </style>
+</head>
+<body class="font-roboto bg-gray-50">
+    <header class="bg-purple-800 p-4">
+      <nav class="flex justify-between items-center ">
+        <span><a href="#" class="text-white text-2xl font-bold">🍕 MYK Pizzeria</a></span>
+        <ul class="flex space-x-3 mr-5">
+          <li><a href="#categories" class="text-white">🍽️ Category</a></li>
+          <li><a href="#menu" class="text-white">📜 Menu</a></li>
+          <li><a href="#reviews" class="text-white">⭐ Rating</a></li>
+          <li><a href="#restaurants" class="text-white">📍 Our Restaurants</a></li>
+          <li><button onclick="openModal()" class="text-white">👤 Login</button></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <section id="categories" class="py-12 px-4 bg-gray-100">
+      <h2 class="text-3xl font-bold text-center mb-8">🍕 Pizza Categories</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-4 bg-white shadow-lg rounded-lg text-center">
+          <img src="https://via.placeholder.com/200" alt="Pizza Image">
+        </div>
+      </div>
+    </section>
+
+    <div id="loginModal" class="hidden fixed inset-0 flex justify-center items-center" onclick="closeModal(event)">
+      <div class="bg-white p-6 rounded-lg shadow-lg w-80 border" onclick="event.stopPropagation()">
+        <h2 class="text-2xl font-bold mb-4">👤 Authorization</h2>
+        <input type="text" placeholder="Username" class="w-full mb-2 p-2 border rounded">
+        <input type="password" placeholder="Password" class="w-full mb-4 p-2 border rounded">
+        <button class="bg-green-600 text-white p-2 rounded w-full" onclick="login()">Login</button>
+        <p class="mt-2 text-gray-600 text-sm">No account? <a href="#" class="text-blue-600" onclick="register()">Register</a></p>
+        
+        <button class="bg-blue-500 text-white p-2 rounded w-full mt-2 flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" alt="Google" class="h-6 mr-2">
+          Login with Google
+        </button>
+        
+        <button class="mt-2 text-gray-900 w-full" onclick="closeModal(event)">Close</button>
+      </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function closeModal(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal || event.target.closest('button') === event.target) {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function login() {
+            alert('Login clicked');
+        }
+
+        function register() {
+            alert('Register clicked');
+        }
+    </script>
+</body>
+</html>
