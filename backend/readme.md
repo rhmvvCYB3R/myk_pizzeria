@@ -1,2 +1,2 @@
 #ТУТ БУДЕТ БЭКЭНДДДДД
-![GIF](https://tenor.com/view/хакеры-hackers-пентагон-typing-ski-mask-gif-17706758)
+![Image](https://github.com/user-attachments/assets/76e728ac-d25b-426c-8463-759519e03430)
