@@ -14,7 +14,7 @@ function login() {
     const password = document.getElementById('password').value;
     if (username && password) {
         alert(`Logged in as: ${username}`);
-        // Handle login logic here (e.g., send to server)
+        
         closeModal();
     } else {
         alert('Please fill in both fields');
@@ -32,7 +32,6 @@ function register() {
     if (username && email && phone && password && licenseAgreement) {
         if (validatePhoneNumber(phone)) {
             alert(`Registered as: ${username}`);
-            // Handle registration logic here (e.g., send to server)
             closeModal();
         } else {
             alert('Please enter a valid phone number');
@@ -43,7 +42,7 @@ function register() {
 }
 
 function validatePhoneNumber(phone) {
-    const regex = /^\+?\d{10,15}$/;  // Phone number validation regex
+    const regex = /^\+?\d{10,15}$/;  
     return regex.test(phone);
 }
 
@@ -69,7 +68,6 @@ function showLoginForm() {
     document.getElementById('modalTitle').innerText = '👤 Authorization';
 }
 
-// License agreement modal
 function openLicenseAgreement() {
     document.getElementById('licenseAgreementModal').classList.remove('hidden');
 }
