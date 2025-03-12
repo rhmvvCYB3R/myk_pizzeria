@@ -7,8 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="./src/output.css" rel="stylesheet">
     <style>
-        
         #loginModal {
+            backdrop-filter: blur(8px); 
+            background-color: rgba(0, 0, 0, 0.5); 
+        }
+
+        
+        #licenseAgreementModal {
             backdrop-filter: blur(8px); 
             background-color: rgba(0, 0, 0, 0.5); 
         }
@@ -39,40 +44,53 @@
 
     <div id="loginModal" class="hidden fixed inset-0 flex justify-center items-center" onclick="closeModal(event)">
       <div class="bg-white p-6 rounded-lg shadow-lg w-80 border" onclick="event.stopPropagation()">
-        <h2 class="text-2xl font-bold mb-4">👤 Authorization</h2>
-        <input type="text" placeholder="Username" class="w-full mb-2 p-2 border rounded">
-        <input type="password" placeholder="Password" class="w-full mb-4 p-2 border rounded">
-        <button class="bg-green-600 text-white p-2 rounded w-full" onclick="login()">Login</button>
-        <p class="mt-2 text-gray-600 text-sm">No account? <a href="#" class="text-blue-600" onclick="register()">Register</a></p>
+        <h2 id="modalTitle" class="text-2xl font-bold mb-4">👤 Authorization</h2>
         
-        <button class="bg-blue-500 text-white p-2 rounded w-full mt-2 flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png" alt="Google" class="h-6 mr-2">
-          Login with Google
-        </button>
-        
+        <div id="loginForm">
+          <input type="text" placeholder="Username" class="w-full mb-2 p-2 border rounded" id="username">
+          <input type="password" placeholder="Password" class="w-full mb-4 p-2 border rounded" id="password">
+          <button class="bg-green-600 text-white p-2 rounded w-full" onclick="login()">Login</button>
+          <p class="mt-2 text-gray-600 text-sm">No account? <a href="#" class="text-blue-600" onclick="showRegisterForm()">Register</a></p>
+        </div>
+
+        <div id="registerForm" class="hidden">
+          <input type="text" placeholder="Username" class="w-full mb-2 p-2 border rounded" id="registerUsername">
+          <input type="email" placeholder="Email" class="w-full mb-2 p-2 border rounded" id="email">
+          <div class="flex mb-2">
+            <select class="w-1/3 p-2 border rounded" id="country">
+              <option value="+1">USA (+1)</option>
+              <option value="+48">Poland (+48)</option>
+              <option value="+994">Azerbaijan (+994)</option>
+              <option value="+375">Belarus (+375)</option>
+              <option value="+44">UK (+44)</option>
+              <option value="+380">Ukraine (+380)</option> 
+            </select>
+            <input type="tel" placeholder="Phone Number" class="w-2/3 ml-2 p-2 border rounded" id="phone" oninput="formatPhone()">
+          </div>
+          <input type="password" placeholder="Password" class="w-full mb-4 p-2 border rounded" id="registerPassword">
+          
+          <label class="flex items-center mb-4">
+            <input type="checkbox" id="licenseAgreement" class="mr-2"> 
+            I accept the <a href="#" class="text-blue-600" onclick="openLicenseAgreement()">terms of the license agreement</a>
+          </label>
+          
+          <button class="bg-blue-600 text-white p-2 rounded w-full" onclick="register()">Register</button>
+          <p class="mt-2 text-gray-600 text-sm">Already have an account? <a href="#" class="text-blue-600" onclick="showLoginForm()">Login</a></p>
+        </div>
+
         <button class="mt-2 text-gray-900 w-full" onclick="closeModal(event)">Close</button>
       </div>
     </div>
 
-    <script>
-        function openModal() {
-            document.getElementById('loginModal').classList.remove('hidden');
-        }
+    
+    <div id="licenseAgreementModal" class="hidden fixed inset-0 flex justify-center items-center" onclick="closeLicenseAgreement(event)">
+      <div class="bg-white p-6 rounded-lg shadow-lg w-80 border" onclick="event.stopPropagation()">
+        <h2 class="text-xl font-bold mb-4">License Agreement(Не скам)</h2>
+        <p class="mb-4">Я соглашаюсь с тем что меня наебут в этом ресторане!!!!</p>
+        <button class="bg-blue-600 text-white p-2 rounded w-full" onclick="closeLicenseAgreement(event)">Close</button>
+      </div>
+    </div>
 
-        function closeModal(event) {
-            const modal = document.getElementById('loginModal');
-            if (event.target === modal || event.target.closest('button') === event.target) {
-                modal.classList.add('hidden');
-            }
-        }
-
-        function login() {
-            alert('Login clicked');
-        }
-
-        function register() {
-            alert('Register clicked');
-        }
-    </script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
